@@ -2,6 +2,7 @@ import express, { json } from "express";
 import morgan from "morgan";
 import * as dotenv from "dotenv";
 import "express-async-errors";
+// import { NotFoundError } from "./errors/customErrors.js";
 
 const app = express();
 dotenv.config();
@@ -15,7 +16,6 @@ import userRouter from "./routes/userRouter.js";
 import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
 
 // middleware
-app.use(errorHandlerMiddleware);
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev")); // prints that is requested
@@ -39,6 +39,7 @@ app.post("/", (req, res) => {
 app.use("*", (req, res) => {
   res.status(404).json({ msg: "No route found" }); // 404 not found handler
 });
+app.use(errorHandlerMiddleware);
 
 // this gets triggered when there is error in processing the request
 app.use((err, req, res, next) => {
