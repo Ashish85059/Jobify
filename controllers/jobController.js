@@ -10,7 +10,7 @@ let jobs = [
 
 export const getAllJobs = async (req, res) => {
   const jobs = await Job.find({});
-  
+  console.log(req.user)
   res.status(StatusCodes.OK).json({ jobs });
 
 };

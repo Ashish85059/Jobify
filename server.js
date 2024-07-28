@@ -2,6 +2,7 @@ import express, { json } from "express";
 import morgan from "morgan";
 import * as dotenv from "dotenv";
 import "express-async-errors";
+import cookieParser from "cookie-parser";
 // import { NotFoundError } from "./errors/customErrors.js";
 
 const app = express();
@@ -14,16 +15,17 @@ const port = process.env.PORT || 5100;
 import jobRouter from "./routes/jobRouter.js";
 import userRouter from "./routes/userRouter.js";
 import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
+import { authenticateUser } from "./middlewares/authMiddleware.js";
 
 // middleware
-
+app.use(cookieParser())
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev")); // prints that is requested
 }
 
 app.use(express.json());
 
-app.use("/api/v1/jobs", jobRouter);
+app.use("/api/v1/jobs", authenticateUser,jobRouter);
 app.use("/api/v1/auth", userRouter);
 
 app.get("/", (req, res) => {
