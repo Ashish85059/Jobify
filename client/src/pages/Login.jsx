@@ -11,7 +11,7 @@ const Login = () => {
         <Logo />
         <h4>Login</h4>
         <FormRow type="email" name="john" defaultValue="john@gmail.com" />
-        <FormRow type="password" name="password" defaultValue="123" />
+        <FormRow type="password" name="password" defaultValue="secret123" />
         <button type="submit" className="btn btn-block">
           Login
         </button>

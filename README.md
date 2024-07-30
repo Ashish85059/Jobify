@@ -3555,7 +3555,7 @@ const customFetch = axios.create({
 export default customFetch;
 ```
 
-main.jsx
+main.jsxa
 
 ```js
 import customFetch from './utils/customFetch.js';

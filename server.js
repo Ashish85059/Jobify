@@ -13,6 +13,7 @@ const port = process.env.PORT || 5100;
 
 // routers
 import jobRouter from "./routes/jobRouter.js";
+import authRouter from "./routes/authRouter.js";
 import userRouter from "./routes/userRouter.js";
 import errorHandlerMiddleware from "./middlewares/errorHandlerMiddleware.js";
 import { authenticateUser } from "./middlewares/authMiddleware.js";
@@ -26,11 +27,16 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.json());
 
 app.use("/api/v1/jobs", authenticateUser,jobRouter);
-app.use("/api/v1/auth", userRouter);
+app.use("/api/v1/users", authenticateUser,userRouter);
+app.use("/api/v1/auth", authRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+app.get("/api/v1/test",(req,res)=>{
+  res.status(200).json({msg:"test route"})
+})
 
 app.post("/", (req, res) => {
   console.log(req.body);

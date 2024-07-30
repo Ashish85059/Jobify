@@ -3,6 +3,8 @@ import {
   HomeLayout,Landing,Register,Login,DashboardLayout,Error,AddJob,AllJobs,Stats,Profile,Admin
 } from "./pages"
 
+import {action as registerAction} from  "./pages/Register.jsx"
+
 export const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem("darkTheme") === "true";
   document.body.classList.toggle("dark-theme", isDarkTheme); // adds class dark-theme to body of document
@@ -24,6 +26,7 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
+        action:registerAction
       },
       {
         path: "login",
