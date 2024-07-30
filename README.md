@@ -3731,7 +3731,7 @@ export const action = async ({ request }) => {
 
 #### Login User
 
-```js
+```jsx
 import { Link, Form, redirect, useNavigation } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
 import { FormRow, Logo } from '../components';
