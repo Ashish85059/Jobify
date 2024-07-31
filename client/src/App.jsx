@@ -1,12 +1,17 @@
 import {RouterProvider, createBrowserRouter} from "react-router-dom";
 import {
-  HomeLayout,Landing,Register,Login,DashboardLayout,Error,AddJob,AllJobs,Stats,Profile,Admin
+  HomeLayout,Landing,Register,Login,DashboardLayout,Error,AddJob,AllJobs,Stats,Profile,Admin,EditJob
 } from "./pages"
 
 import {action as registerAction} from  "./pages/Register.jsx"
 import {action as loginAction} from  "./pages/Login.jsx"
 import { loader as dashboardLoader } from "./pages/DashboardLayout.jsx";
 import { action as addJobAction } from "./pages/AddJob.jsx";
+import { loader as allJobsLoader } from "./pages/AllJobs.jsx";
+import { loader as editJobLoader } from "./pages/EditJob.jsx";
+import { action as editJobAction } from "./pages/EditJob.jsx";
+import { action as deleteJobAction } from "./pages/DeleteJob.jsx";
+import { loader as adminLoader } from "./pages/Admin.jsx";
 
 export const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem("darkTheme") === "true";
@@ -52,7 +57,8 @@ const router = createBrowserRouter([
           },
           {
             path:"all-jobs",
-            element:<AllJobs/>
+            element:<AllJobs/>,
+            loader:allJobsLoader,
           },
           {
             path:"profile",
@@ -60,8 +66,19 @@ const router = createBrowserRouter([
           },
           {
             path:"admin",
-            element:<Admin/>
+            element:<Admin/>,
+            loader:adminLoader
           },
+          {
+            path:"edit-job/:id",
+            element:<EditJob/>,
+            loader:editJobLoader,
+            action:editJobAction
+          },
+          {
+            path:"delete-job/:id",
+            action:deleteJobAction
+          }
         ]
       },
     ],
