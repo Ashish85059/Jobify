@@ -3,10 +3,6 @@ import { nanoid } from "nanoid";
 import { StatusCodes } from "http-status-codes";
 import { NotFoundError } from "../errors/customErrors.js";
 
-let jobs = [
-  { id: nanoid(), company: "apple", position: "front-end" },
-  { id: nanoid(), company: "google", position: "back-end" },
-];
 
 export const getAllJobs = async (req, res) => {
 
@@ -19,10 +15,10 @@ export const getAllJobs = async (req, res) => {
 export const createJob = async (req, res) => {
     req.body.createdBy=req.user.userId
     const job = await Job.create(req.body);
-    res.status(StatusCodes.CREATED).json({ job });
-    
-  
+    res.status(StatusCodes.CREATED).json({ job });  
 };
+
+
 
 export const getJob = async (req, res) => {
   const { id } = req.params;

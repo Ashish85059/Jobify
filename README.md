@@ -5089,7 +5089,7 @@ export default SubmitBtn;
 }
 {
   "name": "Chuckleberry",
-  "email": "test@test.com",
+  "email": "test2@test.com",
   "password": "secret123",
   "lastName": "Gigglepants",
   "location": "Laughterland"
