@@ -62,7 +62,7 @@ app.post("/", (req, res) => {
 
 // this gets triggered when the route is invalid
 app.use("*", (req, res) => {
-  res.status(404).json({ msg: "No route found" }); // 404 not found handler
+  res.sendFile(path.resolve(__dirname,"./public","index.html")) // 404 not found handler
 });
 app.use(errorHandlerMiddleware);
 
