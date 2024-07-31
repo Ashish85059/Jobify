@@ -12,6 +12,7 @@ import { loader as editJobLoader } from "./pages/EditJob.jsx";
 import { action as editJobAction } from "./pages/EditJob.jsx";
 import { action as deleteJobAction } from "./pages/DeleteJob.jsx";
 import { loader as adminLoader } from "./pages/Admin.jsx";
+import { loader as statsLoader } from "./pages/Stats.jsx";
 import { action as profileAction } from "./pages/Profile.jsx";
 
 export const checkDefaultTheme = () => {
@@ -54,7 +55,8 @@ const router = createBrowserRouter([
           },
           {
             path:"stats",
-            element:<Stats/>
+            element:<Stats/>,
+            loader:statsLoader
           },
           {
             path:"all-jobs",

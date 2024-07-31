@@ -5501,7 +5501,7 @@ const AreaChartComponent = ({ data }) => {
     </ResponsiveContainer>
   );
 };
-
+  
 export default AreaChartComponent;
 ```
 

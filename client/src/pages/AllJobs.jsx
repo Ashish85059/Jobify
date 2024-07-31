@@ -19,7 +19,7 @@ const AllJobsContext=createContext()
 const AllJobs = () => {
   const {data}=useLoaderData();
   return <AllJobsContext.Provider value={{data}}>
-    <SearchContainer/>
+    {/* <SearchContainer/> */}
     <JobsContainer/>
   </AllJobsContext.Provider>;
 };
